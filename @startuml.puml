@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+skinparam ArrowColor #2EB15B
+skinparam UsecaseBorderColor #2EB15B
+skinparam ActorBorderColor #2EB15B
+
+actor Visitor as V
+actor User as U
+actor Pharmacy as PH
+actor Admin as A
+
+rectangle "Authentication" {
+  usecase "Sign Up (User)" as UC1
+  usecase "Sign Up (Pharmacy)" as UC2
+  usecase "Upload Certificate" as UC2a
+  usecase "Log In" as UC3
+  usecase "Log Out" as UC4
+  usecase "Edit Profile" as UC5
+  usecase "Change Password" as UC6
+}
+
+V --> UC1
+V --> UC2
+UC2 ..> UC2a : <<include>>
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+PH --> UC3
+PH --> UC4
+PH --> UC5
+PH --> UC6
+A --> UC3
+A --> UC4
+@enduml
